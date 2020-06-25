@@ -1,0 +1,12 @@
+input {
+  margin-left: 20px;
+}
+
+div span{
+  display: flow-root;
+  padding-left: 1em;
+}
+
+button{
+  margin: 13px 26px;
+}

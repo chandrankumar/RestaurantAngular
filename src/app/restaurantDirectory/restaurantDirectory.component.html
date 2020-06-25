@@ -1,0 +1,46 @@
+
+<div class="layout-column align-items-center mt-50">
+  
+  <form #f="ngForm" (ngSubmit)="f.form.valid && add(f)" method="POST">
+  <section class="layout-row align-items-center justify-content-center">
+    <div class="col-4">
+    <input type="text" required ngModel #restaurant="ngModel" name="restaurant" class="large"  placeholder="Restaurant Name" 
+    [ngClass]="{ 'is-invalid': f.submitted && restaurant.invalid }" required
+    />
+   
+    <span *ngIf="f.submitted  && restaurant.invalid" class="invalid-feedback">
+      <span *ngIf="restaurant.errors.required">Restaurant is required</span>
+   </span>
+  </div>
+
+  <div  class="col-4">
+    <input type="text" required ngModel #city="ngModel" name="city" class="large" placeholder="City Name"
+    [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required
+   />
+    <span *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+      <span *ngIf="city.errors.required">city is required</span>
+    </span>
+  </div>
+    
+   
+    <button data-test-id="submit-button">Submit</button>
+  </section>
+</form>
+  
+  <div class="card w-30 mt-30 pb-8">
+    <table class="mb-0">
+      <thead>
+      <tr style="border: 1em;">
+        <th>Restaurant name</th>
+        <th>City</th>
+      </tr>
+      </thead>
+      <tbody data-test-id="restaurant-list">
+      <tr *ngFor="let rest of restaurents">
+        <th>{{rest.restaurant}}</th>
+        <th>{{rest.city}}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
